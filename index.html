@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .secret-message {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter the Password</h1>
+        <input type="password" id="password" placeholder="Enter password" />
+        <button onclick="revealMessage()">Submit</button>
+        <p class="error" id="error-message"></p>
+        <div class="secret-message" id="secret-message">
+            72656b6165726265646f63202c737365636375732061207369206e6f697373696d20656874
+        </div>
+    </div>
+
+    <script>
+        function revealMessage() {
+            const passwordField = document.getElementById("password");
+            const secretMessage = document.getElementById("secret-message");
+            const errorMessage = document.getElementById("error-message");
+
+            const correctPassword = "secret@CIA"; // Change this to your desired password
+
+            if (passwordField.value === correctPassword) {
+                secretMessage.style.display = "block";
+                errorMessage.textContent = ""; // Clear error message
+            } else {
+                secretMessage.style.display = "none";
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
